@@ -45,7 +45,9 @@ This value is a function that will be proided the application `state` as an argu
 
 This function has to decide whether the current Status Node is a match or not.
 
-#### SubStates ####
+#### Sub Status Nodes ####
+
+Each `Status Node` can specify `Sub Status Nodes` in the `subStates` property.
 
 In the same way we like to write nested `if` statements, subStates exist to reduce code duplication.
 
