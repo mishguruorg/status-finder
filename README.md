@@ -1,6 +1,8 @@
 # @mishguru/status-finder #
 
-The status-finder is a different way to represent a tree of many `if` statements when trying to figure out what state you are in.
+Business logic tends to have many `if` statements and embedded `if` statements to decide what the current status is.
+
+This tool is an alternative for writing and reviewing business logic that needs to decide what status we are currently in.
 
 I thought I was making a finite state machine… but that’s really something else. This is instead a little tool to simplify how a status of many paths can be derived from state.
 
@@ -19,15 +21,23 @@ npm install @mishguru/status-finder
 
 ## Concepts
 
-### Status Node
+### Status Tree
+
+This is a data structure that represents the a hierarchy of logic to make sense of the state.
+
+The Status Tree is made up of `Status Node`s and `subStates`. Each node contains a test function to decide if this is the current status.
+
+Each node in the StatusTree can have an array of sub states that also need to be checked.
+
+#### Status Node ####
 
 One of the possible outcomes from evaluating a Status Tree
 
-### Status
+##### Status #####
 
 The value of the `status` property on a `Status Node`. This value will be returned by the statusFinder
 
-### Test
+##### Test #####
 
 The value of the `test` property on a `Status Node`.
 
@@ -35,21 +45,15 @@ This value is a function that will be proided the application `state` as an argu
 
 This function has to decide whether the current Status Node is a match or not.
 
-### Status Tree
-
-A hierarchy of statuses that we will test for. Each node contains a test function to decide if this is the current status.
-
-Each node in the StatusTree can have an array of sub states that also need to be checked.
-
-### State
-
-A value that each status will be tested against. The state can be as simple or complex as your application requires.
-
-### SubStates ###
+#### SubStates ####
 
 In the same way we like to write nested `if` statements, subStates exist to reduce code duplication.
 
 Each status node has the option to specify subStates. Each subState implements the same shape as the `Status Node`.
+
+### State
+
+A value that each `Status Node` will be tested against. The state should be designed by you and can be as simple or complex as your application requires.
 
 ### Status Finder ###
 
