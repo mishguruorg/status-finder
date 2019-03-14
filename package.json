@@ -24,12 +24,15 @@
   },
   "homepage": "https://github.com/mishguruorg/status-finder#readme",
   "ava": {
-		"compileEnhancements": false,
-		"extensions": [
-			"ts"
-		],
-		"require": [
-			"ts-node/register"
-		]
-	}
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
