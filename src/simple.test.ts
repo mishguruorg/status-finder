@@ -1,9 +1,10 @@
 import test from 'ava'
 import { statusFinder, StatusTree } from './'
 
-const singleNode: StatusTree<boolean, string> = [
+const prettySymbol = Symbol('i am the prettiest node')
+const singleNode: StatusTree<boolean, Symbol> = [
   {
-    status: 'i am the prettiest node',
+    status: prettySymbol,
     test: (amIPretty: boolean) => amIPretty,
     subStates: []
   }
@@ -33,15 +34,15 @@ const simpleTree: StatusTree<CatDog, string> = [
 ]
 
 test('UNKNOWN is returned when nothing is found', (t) => {
-  const result = statusFinder<object, string>({}, simpleTree)
+  const result = statusFinder<object, string>({}, simpleTree, 'UNKNOWN')
 
   t.is(result, 'UNKNOWN')
 })
 
 test('the first status can be retrieved', (t) => {
-  const result = statusFinder(true, singleNode)
+  const result = statusFinder(true, singleNode, Symbol('FAILED'))
 
-  t.is(result, 'i am the prettiest node')
+  t.is(result, prettySymbol)
 })
 
 test('the first matching status is retrieved', (t) => {
@@ -50,7 +51,8 @@ test('the first matching status is retrieved', (t) => {
       thisIsCat: true,
       thisIsDog: true
     },
-    simpleTree
+    simpleTree,
+    'FALLBACK'
   )
 
   t.is(result, 'CatDog---------cAT---D0G')
@@ -61,7 +63,8 @@ test('the last status can be retrieved', (t) => {
     {
       thisIsDog: true
     },
-    simpleTree
+    simpleTree,
+    'TOTALLY UNMATCHED'
   )
 
   t.is(result, 'Wan Wan Woof Woof')
