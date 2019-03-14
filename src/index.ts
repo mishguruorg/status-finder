@@ -7,8 +7,8 @@ export type StatusTree<A, B> = {
 const statusFinder = <A, B>(
   state: A,
   statusTree: StatusTree<A, B>,
-  parentStatus: B | 'UNKNOWN' = 'UNKNOWN'
-): B | 'UNKNOWN' => {
+  fallbackStatus: B
+): B=> {
   const [currentStatus, ...remainingStatuses] = statusTree
 
   const doesTestPass = currentStatus.test(state)
@@ -21,9 +21,9 @@ const statusFinder = <A, B>(
       return statusFinder(state, subStates, status)
     }
   } else if (remainingStatuses.length === 0) {
-    return parentStatus
+    return fallbackStatus
   } else {
-    return statusFinder(state, remainingStatuses, parentStatus)
+    return statusFinder(state, remainingStatuses, fallbackStatus)
   }
 }
 
