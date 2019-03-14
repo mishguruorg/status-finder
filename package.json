@@ -30,6 +30,10 @@
     ],
     "require": [
       "ts-node/register"
+    ],
+    "files": [
+      "src/**/*test.ts",
+      "!dist/"
     ]
   },
   "publishConfig": {
