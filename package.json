@@ -4,38 +4,23 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
-    "test": "NODE_ENV=test_local ava --verbose",
+    "build": "pkg-build-tsc",
+    "test": "NODE_ENV=test_local pkg-test-tsc",
     "postpublish": "git push origin master --tags;"
   },
   "devDependencies": {
-    "ava": "^1.3.1",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.3.3333"
+    "@mishguru/package": "^6.0.0-next.7"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mishguruorg/status-finder.git"
   },
-  "author": "Mish Guru <developers@mish.guru",
+  "author": "Mish Guru <dev@mish.guru",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mishguruorg/status-finder/issues"
   },
   "homepage": "https://github.com/mishguruorg/status-finder#readme",
-  "ava": {
-    "compileEnhancements": false,
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "files": [
-      "src/**/*test.ts",
-      "!dist/"
-    ]
-  },
   "publishConfig": {
     "access": "public"
   }
