@@ -6,10 +6,12 @@
   "scripts": {
     "build": "pkg-build-tsc",
     "test": "NODE_ENV=test_local pkg-test-tsc",
+    "lint": "pkg-lint-tsc",
+    "tidy": "pkg-tidy",
     "postpublish": "git push origin master --tags;"
   },
   "devDependencies": {
-    "@mishguru/package": "^6.0.0-next.7"
+    "@mishguru/package": "6.0.0-next.12"
   },
   "repository": {
     "type": "git",

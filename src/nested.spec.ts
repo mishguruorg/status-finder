@@ -2,8 +2,8 @@ import test from 'ava'
 import { statusFinder, StatusTree } from './'
 
 interface CatDog {
-  thisIsCat: true,
-  thisIsDog: true,
+  thisIsCat: true
+  thisIsDog: true
   hasANastyBite: true
 }
 

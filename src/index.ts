@@ -1,6 +1,6 @@
 export type StatusTree<A, B> = {
-  status: B,
-  test: (state: A) => boolean,
+  status: B
+  test: (state: A) => boolean
   subStates: StatusTree<A, B>
 }[]
 
@@ -8,7 +8,7 @@ const statusFinder = <A, B>(
   state: A,
   statusTree: StatusTree<A, B>,
   fallbackStatus: B
-): B=> {
+): B => {
   const [currentStatus, ...remainingStatuses] = statusTree
 
   const doesTestPass = currentStatus.test(state)

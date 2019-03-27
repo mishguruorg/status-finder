@@ -2,7 +2,7 @@ import test from 'ava'
 import { statusFinder, StatusTree } from './'
 
 const prettySymbol = Symbol('i am the prettiest node')
-const singleNode: StatusTree<boolean, Symbol> = [
+const singleNode: StatusTree<boolean, symbol> = [
   {
     status: prettySymbol,
     test: (amIPretty: boolean) => amIPretty,
@@ -11,14 +11,15 @@ const singleNode: StatusTree<boolean, Symbol> = [
 ]
 
 interface CatDog {
-  thisIsCat: boolean,
+  thisIsCat: boolean
   thisIsDog: boolean
 }
 
 const simpleTree: StatusTree<CatDog, string> = [
   {
     status: 'CatDog---------cAT---D0G',
-    test: (state: CatDog) => state.thisIsCat === true && state.thisIsDog === true,
+    test: (state: CatDog) =>
+      state.thisIsCat === true && state.thisIsDog === true,
     subStates: []
   },
   {

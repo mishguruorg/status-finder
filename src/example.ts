@@ -3,7 +3,6 @@
   a somewhat realistic example.
 */
 
-
 // 1. Import the function and generic type
 import { statusFinder, StatusTree } from './'
 
@@ -20,11 +19,11 @@ enum session {
 
 // 3. Define the shape of the state we will be testing against
 interface SessionState {
-  isInvalid: boolean,
-  hasBadPassword: boolean,
-  hasBadUsername: boolean,
+  isInvalid: boolean
+  hasBadPassword: boolean
+  hasBadUsername: boolean
   verification?: {
-    isComplete: boolean,
+    isComplete: boolean
     attempt?: {
       token?: string
     }
@@ -61,22 +60,25 @@ const statusTree: SessionTree = [
     subStates: [
       {
         status: session.REQUIRES_VERIFICATION,
-        test: ({ verification }) => verification != null && verification.isComplete === false,
+        test: ({ verification }) =>
+          verification != null && verification.isComplete === false,
         subStates: [
           {
             status: session.AWAITING_VERIFICATION_TOKEN,
-            test: ({ verification: { attempt } }) => attempt != null && attempt.token == null,
+            test: ({ verification: { attempt } }) =>
+              attempt != null && attempt.token == null,
             subStates: []
           },
           {
             status: session.ATTEMPTING_VERIFICATION,
-            test: ({ verification: { attempt } }) => attempt != null && attempt.token != null,
+            test: ({ verification: { attempt } }) =>
+              attempt != null && attempt.token != null,
             subStates: []
           }
         ]
       }
     ]
-  },
+  }
 ]
 
 /*
