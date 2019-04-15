@@ -3,12 +3,12 @@
   "version": "0.2.0",
   "description": "",
   "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "pkg-build-tsc",
-    "test": "NODE_ENV=test_local pkg-test-tsc",
-    "lint": "pkg-lint-tsc",
-    "tidy": "pkg-tidy",
-    "postpublish": "git push origin master --tags;"
+    "build": "pkg-build",
+    "test": "NODE_ENV=test pkg-test",
+    "lint": "pkg-lint",
+    "tidy": "pkg-tidy"
   },
   "devDependencies": {
     "@mishguru/package": "6.0.0-next.30"
