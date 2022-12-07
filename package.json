@@ -13,7 +13,7 @@
     "tidy": "pkg-tidy"
   },
   "devDependencies": {
-    "@mishguru/package": "6.0.0-next.30"
+    "@mishguru/package": "9.6.0"
   },
   "repository": {
     "type": "git",
